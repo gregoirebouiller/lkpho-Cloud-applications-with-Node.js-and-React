@@ -4,6 +4,19 @@ const express = require('express');
 // Create an instance of an Express application
 const app = new express();
 
+//Define an array for the months of the year
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+app.post("/fetchMonth/:num", (req,res) => {
+    let num = parseInt(req.params.num);
+    if (num < 1 || num > 12){
+        res.send("Not a valid month number");
+    }
+    else{
+        res.send(months[num-1]);
+    }
+})
+
 // Initialize an array to store login details
 let loginDetails = [];
 
